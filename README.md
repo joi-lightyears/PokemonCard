@@ -1,4 +1,4 @@
 # PokemonCard
 created for fun
 
-you can search pokemon name on top of the card, enjoy ^^
+you can search any pokemon name on top of the card, enjoy ^^
