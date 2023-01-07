@@ -57,6 +57,7 @@ body{
     /* border: 1px solid black; */
     border-radius: 8px;
     padding: 0.3rem;
+    transition: background-color 0.5s ease-in-out;
 }
 
 /* top of the card */
@@ -121,6 +122,7 @@ body{
 }
 #data .base-stats-title{
     text-align: center;
+    transition: 0.5s ease-in-out;
 }
 #stats{
     width: 80%;
@@ -135,6 +137,7 @@ body{
     font-weight: bold;
     text-align: right;
     margin-right: 0.6rem;
+    transition: color 0.5s ease-in-out;
 }
 #stats .stat-number{
     color: gray;
@@ -158,9 +161,11 @@ body{
     height: 0.3rem;
     border-radius: 4px;
     display: flex;
+    transition: 0.5s ease-in-out;
 }
 .bar-inner{
     background-color: var(--grass);
     width: 40%;
     border-radius: 4px;
+    transition: 0.5s ease-in-out;
 }
