@@ -16,6 +16,7 @@ a{
     --steel: rgb(183,185,155);
     --water: rgb(100,147,235);
     --grass: rgb(116,203,72);
+    --grass-a: rgb(116,203,72,0.3);
     --psychic: rgb(251,85,132);
     --ice: rgb(154,214,223);
     --dark: rgb(117,87,76);
@@ -52,7 +53,7 @@ body{
 #pokemonCard{
     width: 22rem;
     height: 35rem;
-    background-color: rgb(116, 203,  72);
+    background-color: var(--grass);
     /* border: 1px solid black; */
     border-radius: 8px;
     padding: 0.3rem;
@@ -98,8 +99,12 @@ body{
 #data{
     background-color: #fff;
     height: 60%;
-    border-radius: 7px;
+    border-radius: 8px;
     padding-top: 5.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.3rem;
 }
 #types{
     display: flex;
@@ -112,4 +117,50 @@ body{
     border-radius: 20px;
     font-size: 0.8rem;
     font-weight: bold;
+    text-transform: capitalize;
+}
+#data .base-stats-title{
+    text-align: center;
+}
+#stats{
+    width: 80%;
+    font-size: 0.8rem;
+    gap: 0.6rem;
+}
+#stats .stat-desc, .stat-number{
+    width: 13%;
+}
+#stats .stat-desc{
+    color: var(--grass);
+    font-weight: bold;
+    text-align: right;
+    margin-right: 0.6rem;
+}
+#stats .stat-number{
+    color: gray;
+    border-left: 1px solid gray;
+    text-align: right;
+    font-weight: bold;
+    margin-right: 0.6rem;
+}
+#stats .stat-row{
+    display: flex;
+}
+
+#stats .stat-bar{
+    width: 70%;
+    display: flex;
+    align-items: center;
+}
+.bar-outside{
+    background-color: var(--grass-a);
+    width: 100%;
+    height: 0.3rem;
+    border-radius: 4px;
+    display: flex;
+}
+.bar-inner{
+    background-color: var(--grass);
+    width: 40%;
+    border-radius: 4px;
 }
