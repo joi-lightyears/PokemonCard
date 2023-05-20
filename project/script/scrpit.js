@@ -32,19 +32,45 @@ const statNumber = document.querySelectorAll('.stat-number')
 const barOutside = document.querySelectorAll('.bar-outside')
 const barInner = document.querySelectorAll('.bar-inner')
 const statDesc = document.querySelectorAll('.stat-desc')
+const listBar = document.querySelector('.list-bar')
+const pokemonList = document.querySelector('.pokemon-list')
+const closeBtn = document.querySelector('.closeBtn')
+const listWrapper = document.querySelector('.list-wrapper')
 
 const fetchApi = async(pokemonName)=>{
     pokeNameApi = pokemonName.split(' ').join('-').toLowerCase()
     const response = await fetch(`https://pokeapi.co/api/v2/pokemon/${pokeNameApi}`)
     if(response.status===200){
         const pokeData = await response.json()
-        console.log(pokeData)
         return pokeData
     }
 
     return false
 }
-
+const fetchPokeList = async()=>{
+    const response = await fetch(`https://pokeapi.co/api/v2/pokemon?limit=1008`)
+    const pokeList = await response.json()
+    return pokeList
+}
+const pokemonListInit = async()=>{
+    const pokeList = await fetchPokeList()
+    listWrapper.innerHTML=''
+    pokeList.results.forEach((pokemon)=>{
+    let liTag = `
+        <li class="poke-item ${pokemon.name}">
+            <div class="row">
+                <span class="song-name-list ">${pokemon.name}</span>
+            </div>
+        </li>
+    `
+    listWrapper.insertAdjacentHTML('beforeEnd',liTag)
+    })
+    const pokeItem = document.querySelectorAll('.poke-item')
+    pokeItem.forEach((item)=>{
+        item.addEventListener('click', ()=>handleOption(item))
+    })
+}
+pokemonListInit()
 search.addEventListener('keypress',async(e)=>{
     if (e.key==="Enter")
     {
@@ -91,3 +117,19 @@ search.addEventListener('keypress',async(e)=>{
     }
     
 })
+
+listBar.addEventListener('click', handleShow)
+function handleShow(){
+    pokemonList.classList.toggle('show')
+}
+closeBtn.addEventListener('click', handleShow)
+function handleShow(){
+    pokemonList.classList.toggle('show')
+}
+
+function handleOption(item){
+    const pokeInfo = item.className.split(' ')[1]
+    search.value = pokeInfo
+    keypress = new KeyboardEvent('keypress',{'key':'Enter'})
+    search.dispatchEvent(keypress)
+}
